@@ -1,5 +1,5 @@
 -- CreateEnum
-CREATE TYPE "Role" AS ENUM ('ADMIN', 'CUSTOMER');
+CREATE TYPE "Role" AS ENUM ('INTERN', 'ENGINEER', 'ADMIN');
 
 -- CreateTable
 CREATE TABLE "Employee" (
@@ -12,9 +12,6 @@ CREATE TABLE "Employee" (
 
     CONSTRAINT "Employee_pkey" PRIMARY KEY ("id")
 );
-
--- CreateIndex
-CREATE UNIQUE INDEX "Employee_name_key" ON "Employee"("name");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Employee_email_key" ON "Employee"("email");
