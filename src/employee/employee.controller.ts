@@ -16,12 +16,12 @@ export class EmployeeController {
   constructor(private readonly employeeService: EmployeeService) {}
 
   @Post()
-  create(@Body() createEmployeeDto: Prisma.UsersCreateInput) {
+  create(@Body() createEmployeeDto: Prisma.EmployeeCreateInput) {
     return this.employeeService.create(createEmployeeDto);
   }
 
   @Get()
-  findAll(@Query('role') role?: 'ADMIN' | 'CUSTOMER') {
+  findAll(@Query('role') role?: 'INTERN' | 'ENGINEER' | 'ADMIN') {
     return this.employeeService.findAll(role);
   }
 
@@ -33,7 +33,7 @@ export class EmployeeController {
   @Patch(':id')
   update(
     @Param('id') id: string,
-    @Body() updateEmployeeDto: Prisma.UsersUpdateInput,
+    @Body() updateEmployeeDto: Prisma.EmployeeUpdateInput,
   ) {
     return this.employeeService.update(+id, updateEmployeeDto);
   }
