@@ -5,32 +5,32 @@ import { DatabaseService } from 'src/database/database.service';
 @Injectable()
 export class EmployeeService {
   constructor(private readonly databaseService: DatabaseService) {}
-  async create(createUsersDto: Prisma.UsersCreateInput) {
-    return this.databaseService.users.create({ data: createUsersDto });
+  async create(createEmployeeDto: Prisma.EmployeeCreateInput) {
+    return this.databaseService.employee.create({ data: createEmployeeDto });
   }
 
-  async findAll(role?: 'ADMIN' | 'CUSTOMER') {
+  async findAll(role?: 'INTERN' | 'ENGINEER' | 'ADMIN') {
     if (role) {
-      return this.databaseService.users.findMany({
+      return this.databaseService.employee.findMany({
         where: {
           role,
         },
       });
     }
 
-    return this.databaseService.users.findMany();
+    return this.databaseService.employee.findMany();
   }
 
   async findOne(id: number) {
-    return this.databaseService.users.findUnique({
+    return this.databaseService.employee.findUnique({
       where: {
         id,
       },
     });
   }
 
-  async update(id: number, updateEmployeeDto: Prisma.UsersUpdateInput) {
-    return this.databaseService.users.update({
+  async update(id: number, updateEmployeeDto: Prisma.EmployeeUpdateInput) {
+    return this.databaseService.employee.update({
       where: {
         id,
       },
@@ -39,7 +39,7 @@ export class EmployeeService {
   }
 
   async remove(id: number) {
-    return this.databaseService.users.delete({
+    return this.databaseService.employee.delete({
       where: {
         id,
       },
