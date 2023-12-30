@@ -7,6 +7,7 @@ import { EmployeeModule } from './employee/employee.module';
 import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler';
 import { APP_GUARD } from '@nestjs/core';
 import { MyLoggerModule } from './my-logger/my-logger.module';
+import { ChatGateway } from './chat/chat.gateway';
 
 @Module({
   imports: [
@@ -35,6 +36,7 @@ import { MyLoggerModule } from './my-logger/my-logger.module';
       provide: APP_GUARD,
       useClass: ThrottlerGuard,
     },
+    ChatGateway,
   ],
 })
 export class AppModule {}
